@@ -1,0 +1,228 @@
+
+body{
+    font-family: 'Raleway', sans-serif;
+    height: 1000px;
+
+
+}
+
+/****************User Profile  *********************/
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+
+#admin-page{
+    padding-top: 0;
+    background-color: white;
+}
+
+i {
+    color:black;
+}
+
+.enabled {
+    color: #4cae4c;
+    position: relative;
+    left:15px;
+}
+
+.disabled{
+    color: #ac2925;
+    position: relative;
+    left:15px;
+}
+
+.error-message{
+    background-color: #ff6699;
+    list-style: none;
+    margin-top: 10px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+
+.form-group{
+    text-align: center;
+}
+
+.form-heading{
+    text-align: center;
+    border-bottom: 2px solid #ff6699;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    padding: 10px;
+    min-height: 600px;
+    margin-top: 50px;
+
+}
+
+.message-card{
+    position: absolute;
+    padding: 10px;
+    right: 5%;
+    top: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #ff6699;
+    font-weight: bold;
+    animation: messageCardAnimation 5s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes messageCardAnimation {
+    0%{ opacity: 1; }
+    30%{opacity: 1  }
+    100%{ opacity: 0 }
+}
+
+.file-input-field{
+    position: fixed;
+    top: -9999px;
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 30px;
+    background-color: #dddddd;
+}
+
+.profile-img{
+    max-width: 200px;
+    max-height: 200px;
+    margin: 20px auto;
+
+
+}
+
+a{
+    color: #ff6699;
+    /*font-weight: bold;*/
+}
+
+.form-button{
+    font-weight: bold;
+    margin-top: 20px;
+    border: none;
+    padding: 5px;
+    background-color:#eee;
+    color:#ff6699;;
+    font-size: 16px;
+    transition: 0.1s;
+}
+
+.form-button:hover{
+    background-color: #ff6699;
+    color:white;
+    transform: scale(1.05);
+    
+}
+
+.form-button:focus{
+    outline:none;
+}
+
+.icons {
+    font-size: 18px;
+    color: #ff6699;
+    transition: 0.2s;
+
+}
+
+.icons:hover{
+    transform: scale(1.5);
+}
+
+#users_table td{
+    vertical-align: middle;
+}
+
+.form-control:focus{
+    box-shadow: 0 0 8px rgba(255, 102, 153, 1);
+    border-color: white;
+}
+
+.form-control{
+    width: 70%;
+    margin:0 auto;
+    text-align: center;
+    border-radius: 0px;
+}
+
+#create_form {
+    margin-top: 50px;
+}
+
+.fa-picture-o{
+    font-size: 36px;
+}
+
+.fa-picture-o:hover{
+    transition: 0.7s ease-in-out;
+    transform: rotate(360deg);
+    cursor: pointer;
+}
+
+.fa-plus-circle{
+    font-size:14px;
+    font-weight: bold;
+}
+
+
+#upload-button{
+    position: relative;
+    bottom: 5px;
+    font-size: 18px;
+    cursor:pointer;
+}
+
+
+
+.sidebar li a{
+    font-size: 16px;
+}
+
+/*Media queries*/
+@media screen and (max-width: 480px) {
+    .form-control{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+   .form-heading{
+    text-align: left;
+   }
+}
