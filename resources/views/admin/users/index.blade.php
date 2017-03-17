@@ -3,9 +3,18 @@
 @section('content')
 
 <div class="card col-lg-10 col-lg-offset-1">
-@if(Session::has('deleted'))
+    @if(Session::has('deleted'))
     <div class="message-card">{{session('deleted')}}</div>
     @endif
+
+    @if(Session::has('updated'))
+    <div class="message-card">{{session('updated')}}</div>
+    @endif
+
+    @if(Session::has('created'))
+    <div class="message-card">{{session('created')}}</div>
+    @endif
+
     <h1 class="form-heading">Users</h1>
     <div class="table-responsive" id="users_table">
         <table class="table table-hover">

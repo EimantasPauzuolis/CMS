@@ -3,7 +3,6 @@ body{
     font-family: 'Raleway', sans-serif;
     height: 1000px;
 
-
 }
 
 /****************User Profile  *********************/
@@ -64,10 +63,11 @@ i {
 .error-message{
     background-color: #ff6699;
     list-style: none;
-    margin-top: 10px;
     font-weight: bold;
     color: white;
     text-align: center;
+    width: 70%;
+    margin: 10px auto;
 }
 
 
@@ -86,7 +86,7 @@ i {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: relative;
     padding: 10px;
-    min-height: 600px;
+    min-height: 650px;
     margin-top: 50px;
 
 }
@@ -106,7 +106,7 @@ i {
 
 @keyframes messageCardAnimation {
     0%{ opacity: 1; }
-    30%{opacity: 1  }
+    30%{ opacity: 1 }
     100%{ opacity: 0 }
 }
 
@@ -181,16 +181,20 @@ a{
     border-radius: 0px;
 }
 
+textarea.form-control{
+    text-align: left;
+}
 #create_form {
     margin-top: 50px;
 }
 
 .fa-picture-o{
     font-size: 36px;
+    transition: 0.7s ease-in-out;
 }
 
 .fa-picture-o:hover{
-    transition: 0.7s ease-in-out;
+    
     transform: rotate(360deg);
     cursor: pointer;
 }
