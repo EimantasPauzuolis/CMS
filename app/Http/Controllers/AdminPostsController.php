@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 
 use App\Http\Requests;
 use App\Http\Requests\PostsCreateRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPostsController extends Controller
 {
@@ -41,7 +45,20 @@ class AdminPostsController extends Controller
      */
     public function store(PostsCreateRequest $request)
     {
-        
+        $user = Auth::user();
+        $input = $request->all();
+        $input['user_id'] = $user->id;
+        if($file = $request->file('photo_id')){
+
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['path' => $name]);
+            $input['photo_id'] = $photo->id;
+        }
+        Post::create($input);
+
+        return redirect('/admin/posts');
+
     }
 
     /**
@@ -63,7 +80,9 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.posts.edit');
+        $post = Post::findOrFail($id);
+        $categories = Category::lists('name', 'id');
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -75,7 +94,29 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $input = $request->all();
+        if($file = $request->file('photo_id')){
+            //Checks if the user already has a relation to an image and deletes both the image on the server and the old relation in the table
+            if($post->photo){
+                Photo::destroy([$post->photo->id]);
+                $oldPath = '/public' . $post->photo->path;
+                Storage::delete($oldPath);
+            }
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+
+            $photo = Photo::create(['path'=>$name]);
+            $input['photo_id']=$photo->id;
+        }
+
+        $user = Auth::user();
+        $input['user_id']=$user->id;
+        $post->update($input);
+        Session::flash('updated', 'The post has been updated');
+        return redirect('/admin/posts');
+
     }
 
     /**

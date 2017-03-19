@@ -36,7 +36,6 @@ class AdminUsersController extends Controller
     public function create()
     {
         $roles = Role::lists('name','id')->all();
-        Session::flash('created', 'The user has been created');
         return view('admin.users.create', compact('roles'));
     }
 
@@ -60,7 +59,7 @@ class AdminUsersController extends Controller
 
         $input['password'] = bcrypt($request->password);
         User::create($input);
-
+        Session::flash('created', 'The user has been created');
         return redirect('/admin/users');
     }
 

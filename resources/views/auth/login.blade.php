@@ -14,7 +14,7 @@
                                 <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))                                    
-                                        <div class="error-meesage">{{ $errors->first('email') }}</div>                           
+                                        <div class="error-message">{{ $errors->first('email') }}</div>
                                 @endif
                             
                         </div>
@@ -22,7 +22,7 @@
                         <div class="form-group">
                                 <input id="password" type="password" class="form-control" placeholder="Password" name="password">
                                      @if ($errors->has('password'))                                    
-                                        <div class="error-meesage">{{ $errors->first('password') }}</div>                           
+                                        <div class="error-message">{{ $errors->first('password') }}</div>
                                      @endif                        
                         </div>
 

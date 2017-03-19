@@ -34,7 +34,7 @@
 
             <tr>
                 <td>{{$post->id}}</td>
-                <td>{{$post->title}} </td>
+                <td>{{$post->title}}</td>
                 <td>{{$post->body}}</td>
                 <td>{{$post->category->name}}</td>          
                 <td>{{$post->created_at->diffForHumans()}}</td>

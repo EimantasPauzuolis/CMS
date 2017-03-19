@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label>
-                <span id="upload-button">Upload profile image</span> <i class="fa fa-picture-o" aria-hidden="true"></i>
+                <span id="upload-button">Upload post image</span> <i class="fa fa-picture-o" aria-hidden="true"></i>
                 {!! Form::file('photo_id',['class'=>'file-input-field']) !!}
             </label>
         </div>
