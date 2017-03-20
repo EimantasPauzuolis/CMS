@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
 use App\Photo;
+use App\Post;
 use App\Role;
 use Faker\Provider\File;
 use Illuminate\Http\Request;
@@ -133,6 +134,17 @@ class AdminUsersController extends Controller
             Photo::destroy($user->photo->id);
             Storage::delete($oldPath);
         }
+        $posts = Post::Where('user_id', '=', $user->id)->get();
+
+        foreach ($posts as $post){
+            if($photo = $post->photo){
+                Photo::destroy($photo->id);
+                $oldPath = '/public' . $photo->path;
+                Storage::delete($oldPath);
+            }
+        }
+        Post::destroy($posts);
+
         $user->delete();
 
         Session::flash('deleted', 'The user has been deleted');
