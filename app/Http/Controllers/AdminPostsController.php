@@ -109,6 +109,7 @@ class AdminPostsController extends Controller
 
             $photo = Photo::create(['path'=>$name]);
             $input['photo_id']=$photo->id;
+
         }
 
         $user = Auth::user();
