@@ -33,8 +33,14 @@
             </label>
         </div>
         <div class="form-group">
-            {!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Edit post', ['type' =>'submit', 'class'=>'form-button col-sm-4 col-sm-offset-4']) !!}
-        </div>
+            {!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Edit post', ['type' =>'submit', 'class'=>'form-button col-sm-4']) !!}
+        </div> 
         {!! Form::close() !!}
+
+        {!! Form::open(['method'=>'Delete', 'action'=> ['AdminPostsController@destroy', $post->id]])!!}
+        <div class="form-group">
+        {!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Delete post', ['type'=>'submit', 'class'=>'form-button col-sm-4 col-sm-offset-4'])!!}
+        </div>
+        {!! Form::close()!!}
     </div>
 @endsection

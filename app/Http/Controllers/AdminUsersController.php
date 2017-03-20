@@ -103,7 +103,7 @@ class AdminUsersController extends Controller
         if($file = $request->file('photo_id')){
             //Checks if the user already has a relation to an image and deletes both the image on the server and the old relation in the table
             if($user->photo){
-                Photo::destroy([$user->photo->id]);
+                Photo::destroy($user->photo->id);
                 $oldPath = '/public' . $user->photo->path;
                 Storage::delete($oldPath);
             }
@@ -128,10 +128,12 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-
-        //Photo::destroy($user->photo->id);
-
-        //$user->delete();
+        if($user->photo){
+            $oldPath = '/public' . $user->photo->path;
+            Photo::destroy($user->photo->id);
+            Storage::delete($oldPath);
+        }
+        $user->delete();
 
         Session::flash('deleted', 'The user has been deleted');
 
