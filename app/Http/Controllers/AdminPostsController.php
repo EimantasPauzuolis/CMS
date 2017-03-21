@@ -56,6 +56,7 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
         }
         Post::create($input);
+        Session::flash('created', 'The post has been created');
 
         return redirect('/admin/posts');
 

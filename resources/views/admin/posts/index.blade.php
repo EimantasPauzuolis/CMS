@@ -15,8 +15,8 @@
     @endif
 
     <h1 class="form-heading">Posts</h1>
-    <div class="table-responsive" id="posts_table">
-        <table class="table table-hover">
+    <div class="table-responsive">
+        <table class="table table-hover vertical-align">
             <thead>
             <tr>
                 <th>ID</th>

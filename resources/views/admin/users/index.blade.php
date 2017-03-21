@@ -16,8 +16,8 @@
     @endif
 
     <h1 class="form-heading">Users</h1>
-    <div class="table-responsive" id="users_table">
-        <table class="table table-hover">
+    <div class="table-responsive">
+        <table class="table table-hover vertical-align">
             <thead>
             <tr>
                 <th>ID</th>

@@ -1,7 +1,7 @@
 
 body{
     font-family: 'Raleway', sans-serif;
-    height: 1000px;
+    height: 1200px;
 
 }
 
@@ -223,6 +223,68 @@ textarea.form-control{
 .addCategory{
     
 }
+
+.vertical-align tbody tr td{
+    vertical-align: middle;
+}
+
+.dz-message span{
+    font-weight: bold;
+    margin-top: 20px;
+    border: none;
+    padding: 5px;
+    background-color:#eee;
+    color:#ff6699;;
+    font-size: 16px;
+    transition: 0.1s;
+}
+
+.dz-message span:hover{
+    background-color: #ff6699;
+    color:white;
+}
+
+.dz-message span:focus{
+    outline:none;
+}
+
+ul.pager > :first-child {
+    float: left;
+    margin-left: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+ul.pager > :last-child {
+    float: right;
+    margin-right: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+ul.pager li a{
+    font-size:24px;
+    font-weight: bold;
+    border-radius: 0px;
+    border: none;
+}
+
+ul.pager li a:hover{
+    background-color: #ff6699;
+    color:white;
+    transform: scale(1.05);
+}
+
+ul .pager li a:focus{
+    outline:none;
+}
+
+
+
+ul.pager li span{
+    font-size:24px;
+    font-weight: bold;
+    border-radius: 0px;
+}
+
 /*Media queries*/
 @media screen and (max-width: 480px) {
     .form-control{
