@@ -67,6 +67,15 @@ $(document).ready(function(){
         var icon = this.children;
         icon[0].style.color = 'black';
     }});
+
+        $('.dropdown-toggle').on({
+        mouseover: function(){
+        var icon = this.children;
+        icon[0].style.color = 'white';
+    },  mouseleave: function(){
+        var icon = this.children;
+        icon[0].style.color = 'black';
+    }});
     // $('.form-button').on('mouseleave', function(){
     //     var icon = this.children;
     //     icon[0].style.color = '#ff6699';

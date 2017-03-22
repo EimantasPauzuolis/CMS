@@ -16,6 +16,11 @@
     @endif
 
     <h1 class="form-heading">Upload media</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+        </div>
+    </div>
     {!! Form::open(['method'=>'Post', 'action'=>'AdminMediaController@store', 'files' => true, 'class' =>'dropzone'])!!}
     {!! Form::close()!!}
 </div>

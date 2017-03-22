@@ -1,7 +1,8 @@
 
 body{
     font-family: 'Raleway', sans-serif;
-    max-height: 2000px;
+    
+    /*height: 2400px;*/
     padding-bottom: 200px;
 
 }
@@ -91,7 +92,7 @@ i {
     position: relative;
     padding: 10px;
     min-height: 650px;
-    margin-top: 205px;
+    margin-top: 150px;
     background-color: white;
 
 }
@@ -211,6 +212,12 @@ textarea.form-control{
     font-weight: bold;
 }
 
+.fa-file-image-o{
+    display: block;
+    font-size: 96px;
+    width: 80px;
+    margin: 0 auto;
+}
 
 #upload-button{
     position: relative;
@@ -223,6 +230,7 @@ textarea.form-control{
 
 .sidebar li a{
     font-size: 16px;
+    font-weight: bold;
 }
 
 .addCategory{
@@ -231,6 +239,10 @@ textarea.form-control{
 
 .vertical-align tbody tr td{
     vertical-align: middle;
+}
+
+.vertical-align tbody tr{
+    height: 100px;
 }
 
 .dz-message span{
@@ -312,7 +324,7 @@ ul.pager li span{
 
 .navbar{
     border-bottom: 0px;
-    background-color: rgba(239, 239, 239, 0.4);
+    /*background-color: rgba(239, 239, 239, 0.4);*/
     position: fixed;
     top:0;
     width: 100%;
@@ -342,21 +354,26 @@ li.dropdown{
 
 li.dropdown a{
     transition: 0.2s;
-    height: 30px!important;
+    /*height: 30px!important;*/
 }
 
 li.dropdown a:hover{
     /*background-color: rgba(239, 239, 239, 0.7);*/
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     transform: scale(1.05);
     background-color: #ff6699;
     color:white;
 }
 li.dropdown a:focus{
     /*background-color: rgba(239, 239, 239, 0.7);*/
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     transform: scale(1.05);
     background-color: #ff6699;
     color:white;
     outline: none;
+}
+
+.dropzone {
+    width: 70%;
+    margin: 0 auto;
 }

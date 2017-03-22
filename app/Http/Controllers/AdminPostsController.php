@@ -135,6 +135,7 @@ class AdminPostsController extends Controller
             Storage::delete($oldPath);
         }
         $post->delete();
+        Session::flash('deleted', 'The post has been deleted');
 
         return redirect('/admin/posts');
     }
