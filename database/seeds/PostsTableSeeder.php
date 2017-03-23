@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -14,9 +15,9 @@ class PostsTableSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1, 20) as $index) {
             DB::table('posts')->insert([
-                'title' => $faker->title,
+                'title' => $faker->text(50),
                 'body' => $faker->paragraphs(3, true),
-                'created_at' => time(),
+                'created_at' => Carbon::now(),
                 'category_id' => rand(1, 3),
                 'user_id' => rand(1, 10)
             ]);

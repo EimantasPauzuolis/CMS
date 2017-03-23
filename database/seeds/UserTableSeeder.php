@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 class UserTableSeeder extends Seeder
 {
     /**
@@ -19,8 +20,7 @@ class UserTableSeeder extends Seeder
                 'email'             => $faker->safeEmail,
                 'password'          => bcrypt(str_random(10)),
                 'remember_token'    => str_random(10),
-                'created_at'        => time(),
-                'role_id'           => 1
+                'created_at'        => Carbon::now()
             ]);
         }
 

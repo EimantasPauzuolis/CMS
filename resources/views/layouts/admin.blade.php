@@ -154,24 +154,16 @@
                                 <a href="{{route('admin.posts.create')}}">Create Post</a>
                             </li>
 
+                             <li>
+                                <a href="{{route('admin.comments.index')}}">Comments</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
 
 
                     <li>
-                        <a href="#"><i class="fa fa-asterisk" aria-hidden="true"></i> Categories<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/admin/categories">All Categories</a>
-                            </li>
-
-                            <li>
-                                <a href="/admin/categories/create">Create Category</a>
-                            </li>
-
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="/admin/categories"><i class="fa fa-asterisk" aria-hidden="true"></i> Categories</span></a>
                     </li>
 
 
@@ -189,12 +181,6 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-
-
-
-
-
 
                    
                 </ul>
@@ -220,6 +206,7 @@
 <!-- Page Content -->
 <div id="page-wrapper">
     <div class="container-fluid">
+    
         <div class="row">
             <div class="col-lg-12">
 
@@ -231,7 +218,7 @@
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
-</div>
+    </div>
 <!-- /#page-wrapper -->
 
 </div>

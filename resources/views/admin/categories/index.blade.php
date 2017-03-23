@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="card col-lg-10 col-lg-offset-1">
+<div class="col-lg-5 col-lg-offset-3 col-md-12 card">
     @if(Session::has('deleted'))
     <div class="message-card">{{session('deleted')}}</div>
     @endif
@@ -40,18 +40,24 @@
 
             </tbody>
         </table>
-    </div>
+    </div>{{-- Table end --}}
   
 {!! Form::open(['method'=>'Post', 'action'=>'AdminCategoriesController@store'])!!}
 <div class="form-group">
+
 {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Category name'])!!}
+
  @if ($errors->has('name'))
                 <div class="error-message">{{$errors->first('name')}}</div>
             @endif
 </div>
 <div class="form-group">
-{!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Add category',['type'=>'submit', 'class'=>'form-button col-sm-4 col-sm-offset-4'])!!}
+<div class="row">
+{!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Add category',['type'=>'submit', 'class'=>'form-button'])!!}
+</div>
 </div>
 {!!Form::close()!!}
-</div>
+
+</div>{{-- Card end --}}
+
 @endsection

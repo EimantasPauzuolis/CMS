@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="card col-lg-10 col-lg-offset-1">
+<div class="col-lg-5 col-lg-offset-3 col-md-12 card">
     @if(Session::has('deleted'))
     <div class="message-card">{{session('deleted')}}</div>
     @endif
