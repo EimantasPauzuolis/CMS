@@ -144,6 +144,7 @@ class AdminPostsController extends Controller
 
         $categories = Category::all();
         $post = Post::findOrFail($id);
-        return view('post', compact(['post', 'categories']));
+        $newestPosts = Post::orderBy('created_at', 'asc')->take(5)->get();
+        return view('post', compact(['post', 'categories', 'newestPosts']));
     }
 }

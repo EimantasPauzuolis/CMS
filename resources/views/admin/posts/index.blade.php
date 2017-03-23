@@ -35,7 +35,7 @@
             <tr>
                 <td>{{$post->id}}</td>
                 <td><a href="{{route('home.post', $post->id)}}">{{$post->title}}</a></td>
-                <td>{{$post->body}}</td>
+                <td>{{substr($post->body, 0, 250) . '...'}}</td>
                 <td>{{$post->category->name}}</td>          
                 <td>{{$post->created_at->diffForHumans()}}</td>
                 <td>{{$post->user->name}}</td>

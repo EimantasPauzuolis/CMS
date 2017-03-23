@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>The Tech Blogger</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/">The Tech Blogger</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -60,7 +60,7 @@
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                    <i class="fa fa-user fa-fw"><strong></i>{{Auth::user()->name}}</strong> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i><strong>{{Auth::user()->name}}</strong> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
