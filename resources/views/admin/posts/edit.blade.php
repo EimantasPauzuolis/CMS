@@ -33,7 +33,7 @@
             </label>
         </div>
         <div class="form-group">
-            {!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Edit post', ['type' =>'submit', 'class'=>'form-button col-sm-4']) !!}
+            {!! Form::button('<i class="fa fa-plus-circle" aria-hidden="true"></i> Update post', ['type' =>'submit', 'class'=>'form-button col-sm-4']) !!}
         </div> 
         {!! Form::close() !!}
 

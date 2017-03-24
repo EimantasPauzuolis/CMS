@@ -6,7 +6,7 @@ use App\Photo;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
-
+use App\Comment;
 use App\Http\Requests;
 use App\Http\Requests\PostsCreateRequest;
 use Illuminate\Support\Facades\Auth;
@@ -144,7 +144,9 @@ class AdminPostsController extends Controller
 
         $categories = Category::all();
         $post = Post::findOrFail($id);
-        $newestPosts = Post::orderBy('created_at', 'asc')->take(5)->get();
-        return view('post', compact(['post', 'categories', 'newestPosts']));
+        $newestPosts = Post::orderBy('created_at', 'desc')->take(5)->get();
+        $comments = Comment::where('post_id', '=', $id)->get();
+        // return $comments;
+        return view('post', compact(['post', 'categories', 'newestPosts', 'comments']));
     }
 }

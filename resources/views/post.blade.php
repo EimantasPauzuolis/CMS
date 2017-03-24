@@ -10,6 +10,7 @@
             <div class="col-lg-8 card">
                 <!-- Blog Post -->
                 <!-- Title -->
+                <div class="post-body">
                 <h1 class="form-heading">{{$post->title}}</h1>
                 <!-- Author -->
                 <h4 class="lead">
@@ -22,65 +23,57 @@
                 <!-- Preview Image -->
                 <img class="img-responsive" src="{{$post->photo ? $post->photo->path : 'http://placehold.it/900x300'}}" alt="No image" height = "150">
                 <hr>
-                <div class="post-body">
+                
                     <!-- Post Content -->
                     <p class="lead">{{$post->body}}</p>
 
 
                     <!-- Blog Comments -->
                     <!-- Comments Form -->
-                    <div class="small-card">
-                        <h4>Leave a Comment:</h4>
-                        <form role="form">
-                            <div class="form-group">
-                                <textarea class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                            <button type="submit" class="form-button">Submit</button>
-                            </div>
-                        </form>
-                    </div>
+                    <div class="comments-area">
+                        <div class="small-card">
+                            <h4 class="reply-header">Leave a Comment</h4>
 
-
-                    <!-- Posted Comments -->
-                    <div class="small-card">
-                    <!-- Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            {!! Form::open(['method'=>'Post', 'action' => 'PostCommentsController@store'])!!}
+                            <input type="hidden" name="post_id" value='{{$post->id}}'>
+                            <div class="form-group">
+                                {!! Form::textarea('content', null, ['class'=>'form-control'])!!}
                             </div>
+                            <div class="form-group">
+                                {!! Form::button('Comment', ['type'=>'submit', 'class'=>'form-button'])!!}
+                            </div>
+                            {!! Form::close()!!}
+                           {{--  <form role="form">
+                                <div class="form-group">
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                <button type="submit" class="form-button">Submit</button>
+                                </div>
+                            </form> --}}
                         </div>
 
-                        <!-- Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                <!-- Nested Comment -->
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Nested Start Bootstrap
-                                            <small>August 25, 2014 at 9:30 PM</small>
-                                        </h4>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    </div>
-                                </div><!-- End Nested Comment -->
+
+                        <!-- Posted Comments -->
+                        <div class="comments-box">
+                         
+                            @foreach($comments as $comment)
+                            <!-- Comment -->
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="/images/alternate.jpg" alt="" height="50">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Start Bootstrap
+                                        <small>{{$comment->created_at}}</small>
+                                    </h4>
+                                    {{$comment->content}}    
+                                </div>
                             </div>
-                        </div>
+                            @endforeach
+
+
+                        </div>{{--End Comments box --}}
                     </div>{{--End Comments area --}}
                 </div>{{--End post-body--}}
             </div>
@@ -113,7 +106,7 @@
                     <h4 class="form-heading">5 Newest posts</h4>
                     <ul class="newestPostsList">
                         @foreach($newestPosts as $post)
-                        <li class="newestPost">{{$post->title}}</li>
+                        <li class="newestPost"><a href="{{route('home.post', $post->id)}}">{{$post->title}}</a></li>
                         @endforeach
                     </ul>
             </div> <!--End Blog Sidebar -->

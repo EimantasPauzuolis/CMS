@@ -470,3 +470,20 @@ ul.newestPostsList {
      padding: 0 30px;
      margin-bottom: 100px;
  }
+
+ .comments-box{
+    position: relative;
+    padding: 10px;
+    margin-top: 30px;
+    min-height: 100px;
+    background-color: white;
+ }
+
+ .reply-header{
+    text-align: center;
+    font-weight: bold;
+ }
+
+ .comments-area{
+    margin-top: 200px;
+ }
