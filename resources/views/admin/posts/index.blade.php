@@ -14,7 +14,7 @@
     <div class="message-card">{{session('created')}}</div>
     @endif
 
-    <h1 class="form-heading">Posts</h1>
+    <h1 class="form-heading">Comments</h1>
     <div class="table-responsive">
         <table class="table table-hover vertical-align">
             <thead>

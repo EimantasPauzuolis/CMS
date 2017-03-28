@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +16,8 @@ class PostCommentsController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index');
+        $comments = Comment::all();
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -42,7 +42,15 @@ class PostCommentsController extends Controller
         $user = Auth::user();
 
         $input['user_id'] = $user->id;
-        Comment::create($input);
+        $createdComment = Comment::create($input);
+        $createdComment['user'] = $user;
+        if($createdComment->user->photo){
+            $createdComment['user']['photo'] = $createdComment->user->photo;
+        }
+
+        if($request->ajax()){
+            return response()->json($createdComment);
+        }
         return back();
 
     }

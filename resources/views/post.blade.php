@@ -34,13 +34,13 @@
                         <div class="small-card">
                             <h4 class="reply-header">Leave a Comment</h4>
 
-                            {!! Form::open(['method'=>'Post', 'action' => 'PostCommentsController@store'])!!}
+                            {!! Form::open(['method'=>'Post', 'action' => 'PostCommentsController@store', 'id'=>'commentForm'])!!}
                             <input type="hidden" name="post_id" value='{{$post->id}}'>
                             <div class="form-group">
                                 {!! Form::textarea('content', null, ['class'=>'form-control'])!!}
                             </div>
                             <div class="form-group">
-                                {!! Form::button('Comment', ['type'=>'submit', 'class'=>'form-button'])!!}
+                                {!! Form::button('<i class="fa fa-comment" aria-hidden="true"></i> Comment', ['type'=>'submit', 'class'=>'form-button', 'id'=>'commentButton'])!!}
                             </div>
                             {!! Form::close()!!}
                            {{--  <form role="form">
@@ -55,17 +55,17 @@
 
 
                         <!-- Posted Comments -->
-                        <div class="comments-box">
+                        <div class="comments-box" id='commentsContainer'>
                          
-                            @foreach($comments as $comment)
+                            @foreach($post->comments()->orderBy('created_at', 'DESC')->get() as $comment)
                             <!-- Comment -->
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="/images/alternate.jpg" alt="" height="50">
+                                    <img class="media-object" src="{{$comment->user->photo ? $comment->user->photo->path : '/images/alternate.jpg'}}" alt="" height="50">
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Start Bootstrap
-                                        <small>{{$comment->created_at}}</small>
+                                    <h4 class="media-heading">{{$comment->user->name}}
+                                        <small>{{$comment->created_at->diffForHumans()}}</small>
                                     </h4>
                                     {{$comment->content}}    
                                 </div>
@@ -112,6 +112,11 @@
             </div> <!--End Blog Sidebar -->
         </div><!--End .row -->
     </div>
-    <!-- End .container -->
 
+    <!-- End .container -->
+    <script type="text/javascript">
+    
+    var url = "{{route('admin.comments.store')}}";
+
+    </script>
 @endsection

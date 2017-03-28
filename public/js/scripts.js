@@ -54,11 +54,7 @@ $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    //$('button').click(function(e) {
-    //    e.preventDefault();
-    //    alert("This is a demo.\n :-)");
-    //});
-
+    //Button icon hover animations
     $('.form-button').on({
         mouseover: function(){
         var icon = this.children;
@@ -76,12 +72,40 @@ $(document).ready(function(){
         var icon = this.children;
         icon[0].style.color = 'black';
     }});
-    // $('.form-button').on('mouseleave', function(){
-    //     var icon = this.children;
-    //     icon[0].style.color = '#ff6699';
-    // });
 
 
+    //Comments
+    $('#commentForm').on('submit', function(event){
+        event.preventDefault();
+        var formData = $(this).serialize();
+        console.log(formData);
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData
+        })
+        .done(function(data){
+            console.log(data);
+               $('#commentForm .form-group textarea').val('');
+               $('<div class="media">'
+                +                '<a class="pull-left" href="#">'
+                +                    '<img class="media-object" src="'+ (data.user.photo ? data.user.photo.path : '../images/alternate.jpg') +'" alt="" height="50">'
+                +                '</a>'
+                +                '<div class="media-body">'
+                +                    '<h4 class="media-heading"> ' + data.user.name
+                +                        '<small> '+ moment(data.created_at).fromNow() +'</small>'
+                +                    '</h4>'
+                +                    data.content    
+                +                '</div>'
+                +            '</div>'
+
+                ).prependTo('#commentsContainer').hide().slideDown();
+
+               
+
+        });
+        
+    });
 
 
 });
