@@ -59,7 +59,7 @@
                          
                             @foreach($post->comments()->orderBy('created_at', 'DESC')->get() as $comment)
                             <!-- Comment -->
-                            <div class="media">
+                            <div class="media small-card">
                                 <a class="pull-left" href="#">
                                     <img class="media-object" src="{{$comment->user->photo ? $comment->user->photo->path : '/images/alternate.jpg'}}" alt="" height="50">
                                 </a>
@@ -67,7 +67,8 @@
                                     <h4 class="media-heading">{{$comment->user->name}}
                                         <small>{{$comment->created_at->diffForHumans()}}</small>
                                     </h4>
-                                    {{$comment->content}}    
+                                    <p>{{$comment->content}}</p>
+                                    <button class="form-button">Reply</button>
                                 </div>
                             </div>
                             @endforeach
