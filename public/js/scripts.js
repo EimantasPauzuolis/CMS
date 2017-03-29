@@ -2,27 +2,16 @@
 $(document).ready(function(){
 
     $('#selectAllBoxes').click(function(event){
-
         if(this.checked) {
-
             $('.checkBoxes').each(function(){
-
                 this.checked = true;
-
             });
 
         } else {
-
-
             $('.checkBoxes').each(function(){
-
                 this.checked = false;
-
             });
-
-
         }
-
     });
 
 
@@ -87,25 +76,44 @@ $(document).ready(function(){
         .done(function(data){
             console.log(data);
                $('#commentForm .form-group textarea').val('');
-               $('<div class="media">'
+               $('<div class="media small-card">'
                 +                '<a class="pull-left" href="#">'
                 +                    '<img class="media-object" src="'+ (data.user.photo ? data.user.photo.path : '../images/alternate.jpg') +'" alt="" height="50">'
                 +                '</a>'
                 +                '<div class="media-body">'
                 +                    '<h4 class="media-heading"> ' + data.user.name
-                +                        '<small> '+ moment(data.created_at).fromNow() +'</small>'
+                +                        '<small> '+ getTime() +'</small>'
                 +                    '</h4>'
                 +                    data.content    
                 +                '</div>'
                 +            '</div>'
+                ).prependTo('#commentsContainer').hide().fadeIn(); 
 
-                ).prependTo('#commentsContainer').hide().slideDown();
-
-               
-
-        });
-        
+            function getTime(){
+                var time = moment(data.created_at);
+                if(time.isDST()){
+                    time.add(1, 'h');
+                    return time.fromNow();
+                }
+                else{
+                    return time.fromNow();
+                }
+            }
+        });  
     });
+
+    (function () {
+        $(window).scroll(function(){
+            var top = $(window).scrollTop();
+            if(top > 150){            
+                $('#post-sidebar').css({top: top-80});
+            }
+            else{
+                 $('#post-sidebar').css({top: '0px'});
+            }
+        });
+    
+    })();
 
 
 });

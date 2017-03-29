@@ -80,7 +80,7 @@
             </div>
 
             <!-- Blog Sidebar -->
-            <div class="col-md-3 col-md-offset-1 card-no-padding">
+            <div class="col-md-3 col-md-offset-1 card-no-padding" id="post-sidebar">
                 {{--<!-- Blog Search Well -->--}}
                     {{--<h4 class="form-heading">Blog Search</h4>--}}
                     {{--<div class="input-group">--}}
