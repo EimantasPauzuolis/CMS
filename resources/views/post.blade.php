@@ -21,7 +21,11 @@
                 <p class="timePosted"><span class="glyphicon glyphicon-time"></span> Posted {{$post->created_at->diffForHumans()}}</p>
                 <hr>
                 <!-- Preview Image -->
-                <img class="img-responsive" src="{{$post->photo ? $post->photo->path : 'http://placehold.it/900x300'}}" alt="No image" height = "150">
+                <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                <img class="img-responsive" src="{{$post->photo ? $post->photo->path : 'http://placehold.it/900x300'}}" alt="No image" height="150">
+                </div>
+                </div>
                 <hr>
                 
                     <!-- Post Content -->
