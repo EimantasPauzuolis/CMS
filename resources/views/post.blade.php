@@ -102,7 +102,7 @@
                             <ul class="newestPostsList">
                                @if($categories)
                                @foreach($categories as $category)
-                                    <li class="newestPost">{{$category->name}}</li>
+                                    <li class="newestPost"><a href="{{route('category.posts', $category->id)}}">{{$category->name}}</a></li>
                                @endforeach
                                @endif
                             </ul>
