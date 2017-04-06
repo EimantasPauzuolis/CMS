@@ -140,12 +140,4 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
     }
 
-    public function post($id){
-
-        $categories = Category::all();
-        $post = Post::findOrFail($id);
-        $newestPosts = Post::orderBy('created_at', 'desc')->take(5)->get();
-        // return $comments;
-        return view('post', compact(['post', 'categories', 'newestPosts']));
-    }
 }

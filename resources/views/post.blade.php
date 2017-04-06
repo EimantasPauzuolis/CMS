@@ -35,6 +35,7 @@
                     <!-- Blog Comments -->
                     <!-- Comments Form -->
                     <div class="comments-area">
+                        @if(Auth::check())
                         <div class="small-card">
                             <h4 class="reply-header">Leave a Comment</h4>
 
@@ -56,6 +57,9 @@
                                 </div>
                             </form> --}}
                         </div>
+                        @else
+                        <p><strong>Please log in to leave a comment.</strong></p>
+                        @endif
 
 
                         <!-- Posted Comments -->
@@ -72,6 +76,16 @@
                                         <small>{{$comment->created_at->diffForHumans()}}</small>
                                     </h4>
                                     <p>{{$comment->content}}</p>
+                                    <!--Replies -->
+                                    <div class="media">
+                                        <a href="" class="pull-left">
+                                            <img src="/images/alternate.jpg" class="media-object" height="50">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">John Doe <small>August 14, 2017</small></h4>
+                                            This is a reply                                      
+                                        </div>
+                                    </div>
                                     <button class="form-button">Reply</button>
                                 </div>
                             </div>

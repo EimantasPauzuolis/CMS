@@ -19,8 +19,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/post/{id}', ['as' => 'home.post', 'uses' => 'AdminPostsController@post']);
-
+Route::get('/post/{id}', ['as' => 'home.post', 'uses' => 'PostsController@post']);
+Route::get('/category/{id}/posts', ['uses' => 'PostsController@categoryPosts', 'as' => 'category.posts']);
 
 
 Route::group(['middleware' => 'admin'], function(){
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'admin'], function(){
 	Route::resource('admin/categories', 'AdminCategoriesController');
 	Route::get('admin/media/upload', ['as' =>'admin.media.upload', 'uses'=>'AdminMediaController@create']);
 	Route::resource('admin/media', 'AdminMediaController');
-	Route::get('/category/{id}/posts', ['uses' => 'PostsController@categoryPosts', 'as' => 'category.posts']);
+	
 	Route::get('/admin', function(){
     return view('admin.index');
 	});
