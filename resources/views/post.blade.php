@@ -48,14 +48,8 @@
                                 {!! Form::button('<i class="fa fa-comment" aria-hidden="true"></i> Comment', ['type'=>'submit', 'class'=>'form-button', 'id'=>'commentButton'])!!}
                             </div>
                             {!! Form::close()!!}
-                           {{--  <form role="form">
-                                <div class="form-group">
-                                    <textarea class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                <button type="submit" class="form-button">Submit</button>
-                                </div>
-                            </form> --}}
+                            
+                            
                         </div>
                         @else
                         <p><strong>Please log in to leave a comment.</strong></p>
@@ -69,7 +63,7 @@
                             <!-- Comment -->
                             <div class="media small-card">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="{{$comment->user->photo ? $comment->user->photo->path : '/images/alternate.jpg'}}" alt="" height="50">
+                                    <img class="media-object img-circle" src="{{$comment->user->photo ? $comment->user->photo->path : '/images/alternate.jpg'}}" alt="" height="50" width="50">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">{{$comment->user->name}}
@@ -77,16 +71,28 @@
                                     </h4>
                                     <p>{{$comment->content}}</p>
                                     <!--Replies -->
+                                    <div id="repliesContainer">
+                                    @if(count($comment->replies) > 0)
+                                    @foreach($comment->replies as $reply)
                                     <div class="media">
                                         <a href="" class="pull-left">
-                                            <img src="/images/alternate.jpg" class="media-object" height="50">
+                                            <img src="{{$comment->user->photo ? $comment->user->photo->path : '/images/alternate.jpg'}}" class="media-object img-circle" height="50" width="50">
                                         </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading">John Doe <small>August 14, 2017</small></h4>
-                                            This is a reply                                      
+                                            <h4 class="media-heading">{{$reply->user->name}} <small>{{$reply->created_at->diffForHumans()}}</small></h4>
+                                            {{$reply->content}}                                     
                                         </div>
+                                    </div>                                   
+                                    @endforeach
+                                    @endif
                                     </div>
-                                    <button class="form-button">Reply</button>
+                                     {!! Form::open(['method'=>'Post', 'action'=>'CommentRepliesController@createReply','id'=>'replyForm'])!!}
+                                     <div class="form-group">
+                                    {!! Form::textarea('content', null, ['class'=>'form-control'])!!}
+                                    </div>
+                                    {!! Form::button('<i class="fa fa-reply" aria-hidden="true"></i> Reply',['type'=>'submit', 'class'=>'form-button'])!!}
+                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                    {!! Form::close()!!}
                                 </div>
                             </div>
                             @endforeach

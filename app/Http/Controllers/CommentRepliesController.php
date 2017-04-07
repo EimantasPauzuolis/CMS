@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\CommentReply;
+use Illuminate\Support\Facades\Auth;
 
 class CommentRepliesController extends Controller
 {
@@ -39,6 +41,22 @@ class CommentRepliesController extends Controller
         //
     }
 
+    public function createReply(Request $request){
+        $input = $request->all();
+        $user = Auth::user();
+
+        $input['user_id'] = $user->id;
+        $createdComment = CommentReply::create($input);
+        $createdComment['user'] = $user;
+        if($createdComment->user->photo){
+            $createdComment['user']['photo'] = $createdComment->user->photo;
+        }
+
+        if($request->ajax()){
+            return response()->json($createdComment);
+        }
+        return back();
+    }
     /**
      * Display the specified resource.
      *
@@ -83,4 +101,6 @@ class CommentRepliesController extends Controller
     {
         //
     }
+
+
 }

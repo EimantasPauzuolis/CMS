@@ -75,21 +75,53 @@ $(document).ready(function(){
         .done(function(data){
             console.log(data);
                $('#commentForm .form-group textarea').val('');
-               $('<div class="media small-card">'
+                $('<div class="media small-card">'
                 +                '<a class="pull-left" href="#">'
-                +                    '<img class="media-object" src="'+ (data.user.photo ? data.user.photo.path : '../images/alternate.jpg') +'" alt="" height="50">'
+                +                    '<img class="media-object img-circle" src="'+ (data.user.photo ? data.user.photo.path : '../images/alternate.jpg') +'" alt="" height="50" width="50">'
                 +                '</a>'
                 +                '<div class="media-body">'
                 +                    '<h4 class="media-heading"> ' + data.user.name
-                +                        '<small> '+ getTime() +'</small>'
+                +                        '<small> '+ getTime(data.created_at) +'</small>'
                 +                    '</h4>'
                 +                    data.content    
                 +                '</div>'
                 +            '</div>'
                 ).prependTo('#commentsContainer').hide().fadeIn(); 
 
-            function getTime(){
-                var time = moment(data.created_at);
+        });  
+    });
+
+    //Replies
+    $('#replyForm').on('submit', function(event){
+        event.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: '/comment/reply',
+            data: formData
+        })
+        .done(function(data){
+            console.log(data);
+               $('#replyForm .form-group textarea').val('');
+               $('<div class="media">'
+                +                '<a class="pull-left" href="#">'
+                +                    '<img class="media-object img-circle" src="'+ (data.user.photo ? data.user.photo.path : '../images/alternate.jpg') +'" alt="" height="50" width="50">'
+                +                '</a>'
+                +                '<div class="media-body">'
+                +                    '<h4 class="media-heading"> ' + data.user.name
+                +                        '<small> '+ getTime(data.created_at) +'</small>'
+                +                    '</h4>'
+                +                    data.content    
+                +                '</div>'
+                +            '</div>'
+                ).appendTo('#repliesContainer').hide().fadeIn(); 
+
+           
+        });  
+    });
+
+     function getTime(created_at){
+                var time = moment(created_at);
                 if(time.isDST()){
                     time.add(1, 'h');
                     return time.fromNow();
@@ -98,8 +130,6 @@ $(document).ready(function(){
                     return time.fromNow();
                 }
             }
-        });  
-    });
 
     (function () {
         $(window).scroll(function(){

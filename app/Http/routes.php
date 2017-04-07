@@ -41,3 +41,7 @@ Route::group(['middleware' => 'admin'], function(){
 	// ['as' =>'admin.media.upload', 'uses'=>'AdminMediaController@store']
 });
 
+Route::group(['middleware'=>'auth'], function(){
+
+	Route::post('/comment/reply', 'CommentRepliesController@createReply');
+});
