@@ -92,17 +92,22 @@ $(document).ready(function(){
     });
 
     //Replies
-    $('#replyForm').on('submit', function(event){
+    $('.replyForm').on('submit', function(event){
         event.preventDefault();
-        var formData = $(this).serialize();
-        $.ajax({
+        var currentForm = $(this).closest('form');
+        var textarea = currentForm.find('textarea');
+        console.log(textarea);
+        if(textarea.css('display') == 'block'){
+            var formData = $(this).serialize();
+            
+            $.ajax({
             type: 'POST',
             url: '/comment/reply',
             data: formData
         })
         .done(function(data){
             console.log(data);
-               $('#replyForm .form-group textarea').val('');
+               textarea.val('');
                $('<div class="media">'
                 +                '<a class="pull-left" href="#">'
                 +                    '<img class="media-object img-circle" src="'+ (data.user.photo ? data.user.photo.path : '../images/alternate.jpg') +'" alt="" height="50" width="50">'
@@ -114,10 +119,16 @@ $(document).ready(function(){
                 +                    data.content    
                 +                '</div>'
                 +            '</div>'
-                ).appendTo('#repliesContainer').hide().fadeIn(); 
-
+                ).appendTo(currentForm.prev()).hide().fadeIn(); 
+               textarea.css('display', 'none');
            
         });  
+        }//End if
+        else{
+            textarea.css('display', 'block');
+
+        }
+        
     });
 
      function getTime(created_at){

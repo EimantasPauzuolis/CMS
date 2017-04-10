@@ -131,7 +131,7 @@ i {
 
 
 .small-card textarea.form-control{
-    width: 100%;
+
     height: 150px;
 }
 
@@ -513,4 +513,8 @@ ul.newestPostsList {
 
  .comments-area{
     margin-top: 200px;
+ }
+
+ .replyForm textarea{
+    display:none;
  }

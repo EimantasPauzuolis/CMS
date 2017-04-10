@@ -86,12 +86,13 @@
                                     @endforeach
                                     @endif
                                     </div>
-                                     {!! Form::open(['method'=>'Post', 'action'=>'CommentRepliesController@createReply','id'=>'replyForm'])!!}
+                                     {!! Form::open(['method'=>'Post', 'action'=>'CommentRepliesController@createReply','class'=>'replyForm'])!!}
                                      <div class="form-group">
                                     {!! Form::textarea('content', null, ['class'=>'form-control'])!!}
-                                    </div>
+                                   
                                     {!! Form::button('<i class="fa fa-reply" aria-hidden="true"></i> Reply',['type'=>'submit', 'class'=>'form-button'])!!}
                                     <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                     </div>
                                     {!! Form::close()!!}
                                 </div>
                             </div>
