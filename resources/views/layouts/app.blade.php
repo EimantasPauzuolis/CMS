@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('css/blog-post.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>

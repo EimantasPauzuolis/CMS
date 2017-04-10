@@ -44,5 +44,6 @@ Route::group(['middleware' => 'admin'], function(){
 Route::group(['middleware'=>'auth'], function(){
 
 	Route::post('/comment/reply', 'CommentRepliesController@createReply');
-	Route::get('/user', 'UserController@index');
+	Route::get('/profile', 'UserController@currentUserProfile');
+	Route::get('/profile/{id}', 'UserController@userProfile');
 });

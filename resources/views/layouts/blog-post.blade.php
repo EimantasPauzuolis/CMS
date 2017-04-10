@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('css/blog-post.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +69,7 @@
                                 <i class="fa fa-user fa-fw"></i><strong>{{Auth::user()->name}}</strong><i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
-                                <li><a href="/user"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                                <li><a href="/profile"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
                                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
