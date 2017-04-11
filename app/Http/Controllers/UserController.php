@@ -56,8 +56,9 @@ class UserController extends Controller
     }
 
     public function changeEmail(Request $request){
-        $this->validate([$request,
-            'newEmail' =>'required | email']);
+        $this->validate($request,[
+            'newEmail' => 'required'
+        ]);
 
         
     }

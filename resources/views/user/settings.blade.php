@@ -61,13 +61,16 @@
 					<div id="changeEmail">
 						<h3 class="form-heading">Change email</h3>
 							<div class="col-lg-12">	
-								{!! Form::open(['method'=> 'POST', 'action'=>'UserController@changeEmail'])!!}
+								{!! Form::open(['method'=> 'Post', 'action'=>'UserController@changeEmail'])!!}
 								<div class="form-group">
 									{!! Form::text('oldEmail', Auth::user()->email, ['class'=>'form-control form-input', 'disabled'])!!}
 								</div>
 								<div class="form-group">
 									{!! Form::text('newEmail', null, ['class'=> 'form-control form-input', 'placeholder'=> 'New email address'])!!}
 								</div>
+								@if ($errors->has('newEmail'))
+									<div class="error-message">{{$errors->first('newEmail')}}</div>
+								@endif
 								<div class="form-group">
             					{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i> Change email', ['type' =>'submit', 'class'=>'form-button col-sm-4 col-sm-offset-4']) !!}
         						</div>

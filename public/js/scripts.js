@@ -144,12 +144,15 @@ $(document).ready(function(){
 
     (function () {
         $(window).scroll(function(){
-            var top = $(window).scrollTop();
-            if(top > 150){            
-                $('#post-sidebar').css({top: top-80});
-            }
-            else{
-                 $('#post-sidebar').css({top: '0px'});
+            if(window.innerWidth > 1200){
+                var top = $(window).scrollTop();
+                if(top > 150){
+                    $('#post-sidebar').css({top: top-80});
+                }
+                else{
+                    $('#post-sidebar').css({top: '0px'});
+
+                }
             }
         });
     

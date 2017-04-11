@@ -24,7 +24,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
-<body>
+<body class="main">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -67,6 +67,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="/profile"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                                <li><a href="/settings"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -84,7 +86,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="{{asset('js/metisMenu.js')}}"></script>
     <script src="{{asset('js/sb-admin-2.js')}}"></script>
-    <script src="{{asset('js/scripts.js')}}"></script></script>
+    <script src="{{asset('js/scripts.js')}}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
