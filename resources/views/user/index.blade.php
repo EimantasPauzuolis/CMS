@@ -12,7 +12,7 @@
 						 <img class="media-object img-responsive img-circle" src="{{$currentUser->photo ? $currentUser->photo->path : '/images/alternate.jpg'}}" alt="">
 							<div class="form-group">
 								@if($id == Auth::user()->id)
-								<button class="form-button"><i class="fa fa-cog" aria-hidden="true"></i> Account settings</button>
+								<a href="/settings" class="form-button"><i class="fa fa-cog" aria-hidden="true"></i> Account settings</a>
 								@endif
 							</div>
 						 </div>

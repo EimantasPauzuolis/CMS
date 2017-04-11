@@ -155,5 +155,23 @@ $(document).ready(function(){
     
     })();
 
+    $(document).ready(function(){
+        $('#changePassword').siblings().hide();
+    });
+
+    $('#changePasswordToggle').on('click', function(){
+        $('#changePassword').siblings().hide();
+        $('#changePassword').fadeIn();
+    });
+
+    $('#changeEmailToggle').on('click', function(){
+        $('#changeEmail').siblings().hide();
+        $('#changeEmail').fadeIn();
+    });
+
+    $('#changeDetailsToggle').on('click', function(){
+        $('#changeDetails').siblings().hide();
+        $('#changeDetails').fadeIn();
+    });
 
 });

@@ -9,6 +9,7 @@ use App\Post;
 use App\Role;
 use Faker\Provider\File;
 use Illuminate\Http\Request;
+use Hash;
 use App\User;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
@@ -58,7 +59,7 @@ class AdminUsersController extends Controller
             $input['photo_id'] = $photo->id;
         }
 
-        $input['password'] = bcrypt($request->password);
+        $input['password'] = Hash::make($request->password);
         User::create($input);
         Session::flash('created', 'The user has been created');
         return redirect('/admin/users');

@@ -46,4 +46,8 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::post('/comment/reply', 'CommentRepliesController@createReply');
 	Route::get('/profile', 'UserController@currentUserProfile');
 	Route::get('/profile/{id}', 'UserController@userProfile');
+	Route::get('/settings', 'UserController@userProfileSettings');
+	Route::post('/changepassword', 'UserController@changePassword');
+	Route::post('/emailupdate', 'UserController@changeEmail');
+
 });
